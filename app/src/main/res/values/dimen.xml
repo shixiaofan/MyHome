@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="login_text_size">20dp</dimen>
+    <dimen name="login_nomal_margin_top">100dp</dimen>
+    <dimen name="login_nomal_margin_left">20dp</dimen>
+    <dimen name="login_nomal_margin_right">20dp</dimen>
+</resources>
