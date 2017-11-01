@@ -72,7 +72,6 @@ public class Normal_Login extends AppCompatActivity implements View.OnClickListe
                 login_pass.setText("");
                 break;
 
-
         }
     }
 
