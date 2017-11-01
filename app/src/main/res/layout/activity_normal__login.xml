@@ -29,20 +29,22 @@
 
             <EditText
                 android:id="@+id/phone_number"
-                android:layout_width="200dp"
+                android:layout_width="300dp"
                 android:layout_height="50dp"
                 android:layout_toRightOf="@+id/im_01"
                 android:background="@null"
                 android:hint="@string/login_edit_name_hint"/>
+
             <ImageView
-                android:layout_marginRight="5dp"
-                android:src="@drawable/error"
+                android:id="@+id/clear_edit_01"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
                 android:layout_alignEnd="@+id/line"
-                android:visibility="gone"
-                android:layout_marginTop="12dp"/>
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="12dp"
+                android:src="@drawable/error"
+                android:visibility="gone"/>
 
             <ImageView
                 android:id="@+id/line"
@@ -62,12 +64,35 @@
                 android:src="@drawable/text_icon"/>
 
             <EditText
-                android:layout_width="250dp"
+                android:id="@+id/login_pass"
+                android:layout_width="300dp"
                 android:layout_height="50dp"
+                android:layout_alignEnd="@+id/phone_number"
                 android:layout_below="@+id/line"
                 android:layout_toRightOf="@+id/im02"
                 android:background="@null"
-                android:hint="@string/login_edit_pass_hint"/>
+                android:hint="@string/login_edit_pass_hint"
+                android:inputType="textPassword"/>
+
+            <ImageView
+                android:id="@+id/clear_edit_02"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/line"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="12dp"
+                android:layout_toStartOf="@+id/see_edit_pass"
+                android:src="@drawable/error"
+                android:visibility="gone"/>
+
+            <ImageView
+                android:id="@+id/see_edit_pass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/see_pass"
+                android:layout_below="@+id/line"
+                android:layout_marginTop="12dp"
+                android:layout_alignEnd="@+id/line"/>
 
         </RelativeLayout>
 
