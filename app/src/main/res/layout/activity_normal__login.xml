@@ -107,6 +107,7 @@
             android:textSize="@dimen/login_text_size"/>
 
         <Button
+            android:id="@+id/login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/login_nomal_margin_left"

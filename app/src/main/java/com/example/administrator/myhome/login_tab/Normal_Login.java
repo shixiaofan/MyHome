@@ -1,25 +1,44 @@
 package com.example.administrator.myhome.login_tab;
+
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.text.method.TransformationMethod;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.example.administrator.myhome.HttpUtils;
 import com.example.administrator.myhome.R;
+import com.example.administrator.myhome.bean.User;
+
+import java.io.IOException;
+
+import cn.bmob.v3.Bmob;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.SaveListener;
+
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 public class Normal_Login extends AppCompatActivity implements View.OnClickListener,View.OnFocusChangeListener{
     private EditText phone_number,login_pass;
     private ImageView clear_edit_01,clear_edit_02,see_edit_pass;
+    private Button login_ok;
+    private String url ="http://www.baidu.com";
+    private static final String TAG ="Normal_Login" ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_normal__login);
+        Bmob.initialize(this, "843a6abce3ce7c10a0c3b7263ea9c975");
         initView();
     }
 
@@ -29,9 +48,11 @@ public class Normal_Login extends AppCompatActivity implements View.OnClickListe
         clear_edit_01=(ImageView)findViewById(R.id.clear_edit_01);
         clear_edit_02=(ImageView)findViewById(R.id.clear_edit_02);
         see_edit_pass=(ImageView)findViewById(R.id.see_edit_pass);
+        login_ok=(Button)findViewById(R.id.login) ;
         see_edit_pass.setOnClickListener(this);
         clear_edit_01.setOnClickListener(this);
         clear_edit_02.setOnClickListener(this);
+        login_ok.setOnClickListener(this);
         phone_number.addTextChangedListener(new numberChangeListener());
         phone_number.setOnFocusChangeListener(this);
         login_pass.addTextChangedListener(new passwordChangeListener());
@@ -39,9 +60,70 @@ public class Normal_Login extends AppCompatActivity implements View.OnClickListe
 
             }
 
+private void insert(){
+
+    User p2 = new User();
+    p2.setLoginId("11111");
+    p2.setPassword("shioh");
+    p2.save(new SaveListener<String>() {
+        @Override
+        public void done(String objectId,BmobException e) {
+            if(e==null){
+                Toast.makeText(Normal_Login.this, "添加数据成功，返回objectId为："+objectId, Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(Normal_Login.this, "创建数据失败：" + e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
+    });
+}
 
 
 
+    private void login() {
+
+        final String username = phone_number.getText().toString().trim();
+        final String password = login_pass.getText().toString().trim();
+        if (TextUtils.isEmpty(username) || TextUtils.isEmpty(password)) {
+            Toast.makeText(Normal_Login.this, "用户名或者密码不能为空", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        new Thread() {
+            @Override
+            public void run() {
+
+                HttpUtils httpUtils = new HttpUtils();
+                //转换为JSON
+                String user = httpUtils.bolwingJson(username, password);
+
+
+                //String user ="{'username':" + username + ","+"'password':"+password+"}";
+
+                Log.d(TAG, "user:" + user);
+
+                try {
+                    final String result = httpUtils.login(url, user);
+                    Log.d(TAG, "结果:" + result);
+                    //更新UI,在UI线程中
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            if ("SUCCESS".equals(result)) {
+
+                                Toast.makeText(Normal_Login.this, "登陆成功", Toast.LENGTH_SHORT).show();
+
+                            } else {
+                                Toast.makeText(Normal_Login.this, "登陆失败", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+        }.start();
+    }
 
 
 
@@ -70,6 +152,11 @@ public class Normal_Login extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.clear_edit_02:
                 login_pass.setText("");
+                break;
+            case R.id.login:
+
+//                login();
+//                insert();
                 break;
 
         }
