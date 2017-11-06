@@ -1,42 +1,37 @@
 package com.example.administrator.myhome;
 
-import com.squareup.okhttp.MediaType;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.RequestBody;
-import com.squareup.okhttp.Response;
 
 import java.io.IOException;
 
-public class HttpUtils {
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
+public class HttpUtils {
+    private String result;
     OkHttpClient client = new OkHttpClient();
     public static final MediaType JSON
             = MediaType.parse("application/json; charset=utf-8");
-
     public String login(String url, String json) throws IOException {
         //把请求的内容字符串转换为json
-        RequestBody body = RequestBody.create(JSON, json);
-        //RequestBody formBody = new FormEncodingBuilder()
-
-        Request request = new Request.Builder()
+        final RequestBody body = RequestBody.create(JSON, json);
+        final Request request = new Request.Builder()
                 .url(url)
                 .post(body)
                 .build();
-
         Response response = client.newCall(request).execute();
-
-        String result = response.body().string();
-
-
-        return result;
-
-
+        if (response.isSuccessful()) {
+            String result = response.body().string();
+            return result;
+        }
+    return result;
     }
 
 
-    public String bolwingJson(String username, String password) {
-        return "{'username':" + username + "," + "'password':" + password + "}";
+    public String bolwingJson(String loginId, String password) {
+        return "{'username':" + loginId + "," + "'password':" + password + "}";
         //     "{'username':" + username + ","+"'password':"+password+"}";
     }
 

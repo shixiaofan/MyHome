@@ -1,120 +1,120 @@
-<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 <LinearLayout
     android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginTop="60dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.administrator.myhome.login_tab.Normal_Login">
-
-    <LinearLayout
+    android:background="@color/page_backgroud"
+    android:layout_height="580dp">
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="580dp"
-        android:orientation="vertical">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/con_input_bg">
+        <EditText
+            android:id="@+id/fast_phone_edit"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/login_nomal_margin_left"
-            android:layout_marginRight="@dimen/login_nomal_margin_right"
-            android:layout_marginTop="@dimen/login_nomal_margin_top"
-            android:background="@drawable/bg">
-
-            <ImageView
-                android:id="@+id/im_01"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:src="@drawable/text_icon"/>
-
-            <EditText
-                android:layout_width="250dp"
-                android:layout_height="50dp"
-                android:layout_toRightOf="@+id/im_01"
-                android:background="@null"
-                android:hint="请输入11位手机号码"/>
-
-            <ImageView
-                android:id="@+id/line"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_below="@+id/im_01"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/line"/>
-
-            <ImageView
-                android:id="@+id/im02"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_below="@+id/line"
-                android:src="@drawable/text_icon"/>
-
-            <EditText
-                android:id="@+id/image_verification"
-                android:layout_width="150dp"
-                android:layout_height="50dp"
-                android:layout_below="@+id/line"
-                android:layout_toRightOf="@+id/im02"
-                android:background="@null"
-                android:hint="请输入图形验证码"/>
-            <ImageView
-                android:layout_below="@+id/line"
-                android:background="@drawable/text_icon"
-                android:layout_toRightOf="@+id/image_verification"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"/>
-            <ImageView
-                android:id="@+id/line1"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_below="@+id/im02"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/line"/>
-
-            <ImageView
-                android:id="@+id/im03"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_below="@+id/line1"
-                android:src="@drawable/text_icon"/>
-
-            <EditText
-                android:id="@+id/message_verification"
-                android:layout_width="150dp"
-                android:layout_height="50dp"
-                android:layout_below="@+id/line1"
-                android:layout_toRightOf="@+id/im03"
-                android:background="@null"
-                android:hint="请输入短信验证码"/>
-
-
-
-        </RelativeLayout>
-
-        <TextView
-            android:layout_width="match_parent"
+            android:drawableLeft="@drawable/ic_repwd_verify_phone"
+            android:background="@null"
+            android:textSize="14sp"
+            android:hint="请输入手机号"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"/>
+        <ImageView
+            android:id="@+id/clear_phone"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/login_nomal_margin_right"
-            android:layout_marginTop="@dimen/login_nomal_margin_right"
-            android:gravity="right"
-            android:text="@string/forget_pass"
-            android:textColor="#5ea4e2"
-            android:textSize="@dimen/login_text_size"/>
-
+            android:src="@drawable/error"
+            android:layout_marginBottom="15dp"
+            android:layout_above="@+id/line1"
+            android:layout_alignParentEnd="true"/>
+        <ImageView
+            android:id="@+id/line1"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_below="@+id/fast_phone_edit"
+            android:background="#c6bfbf"/>
+        <EditText
+            android:id="@+id/captcha_image_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/list_icon_captcha"
+            android:layout_below="@+id/line1"
+            android:maxLength="20"
+            android:background="@null"
+            android:textSize="14sp"
+            android:hint="请输入图片验证码"/>
+        <ImageView
+            android:id="@+id/clear_captcha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/error"
+            android:layout_alignBottom="@+id/captcha_image"
+            android:layout_toEndOf="@+id/captcha_image_edit"
+            android:layout_marginBottom="12dp"/>
+        <ImageView
+            android:id="@+id/captcha_image"
+            android:layout_below="@+id/line1"
+            android:layout_toRightOf="@+id/clear_captcha"
+            android:layout_width="130dp"
+            android:layout_height="40dp"
+            android:background="#84bfdf"
+            android:layout_marginLeft="7dp"
+            android:layout_marginTop="10dp"/>
+        <ImageView
+            android:id="@+id/line2"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_below="@+id/captcha_image"
+            android:background="#c6bfbf"/>
+        <EditText
+            android:id="@+id/identify_sms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_repwd_verify_phone"
+            android:hint="请输入短信验证码"
+            android:background="@null"
+            android:textSize="14sp"
+            android:layout_below="@+id/line2"/>
+        <ImageView
+            android:id="@+id/clear_sms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/error"
+            android:layout_below="@+id/line2"
+            android:layout_toEndOf="@+id/identify_sms"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"/>
         <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/login_nomal_margin_left"
-            android:layout_marginRight="@dimen/login_nomal_margin_right"
-            android:layout_marginTop="20dp"
-            android:background="@color/login_ok"
-            android:text="@string/login_name"/>
-    </LinearLayout>
-
+            android:id="@+id/send_sms"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="发送短信"
+            android:background="#FF2283e2"
+            android:layout_marginTop="7dp"
+            android:layout_marginLeft="7dp"
+            android:layout_toRightOf="@+id/clear_sms"
+            android:textColor="@android:color/white"
+            android:layout_below="@+id/line2"/>
+    </RelativeLayout>
+    <Button
+        android:id="@+id/fast_login"
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:background="#FF2283e2"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginRight="20dp"
+        android:textSize="16sp"
+        android:text="登录"
+        android:textColor="@android:color/white"/>
 
 </LinearLayout>
 
+
+</LinearLayout>

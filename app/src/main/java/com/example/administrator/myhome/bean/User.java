@@ -1,8 +1,7 @@
 package com.example.administrator.myhome.bean;
 
-import cn.bmob.v3.BmobObject;
 
-public class User extends BmobObject {
+public class User  {
 
     private String loginId;
     private String password;

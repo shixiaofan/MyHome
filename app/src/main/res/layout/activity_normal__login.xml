@@ -30,7 +30,7 @@
             <EditText
                 android:id="@+id/phone_number"
                 android:layout_width="300dp"
-                android:layout_height="50dp"
+                android:layout_height="70dp"
                 android:layout_toRightOf="@+id/im_01"
                 android:background="@null"
                 android:hint="@string/login_edit_name_hint"/>
@@ -66,7 +66,7 @@
             <EditText
                 android:id="@+id/login_pass"
                 android:layout_width="300dp"
-                android:layout_height="50dp"
+                android:layout_height="70dp"
                 android:layout_alignEnd="@+id/phone_number"
                 android:layout_below="@+id/line"
                 android:layout_toRightOf="@+id/im02"
@@ -87,11 +87,10 @@
 
             <ImageView
                 android:id="@+id/see_edit_pass"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/see_pass"
-                android:layout_below="@+id/line"
-                android:layout_marginTop="12dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/eye_close"
+                android:layout_below="@+id/phone_number"
                 android:layout_alignEnd="@+id/line"/>
 
         </RelativeLayout>

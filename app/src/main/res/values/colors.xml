@@ -5,5 +5,7 @@
     <color name="colorAccent">#FF4081</color>
     <color name="bg_login">#c2c1c1</color>
     <color name="login_ok">#348fe1</color>
+    <color name="page_backgroud">#decece</color>
+    <color name="white">#eae1e1</color>
     <drawable name="bg_login">#c2c1c1</drawable>
 </resources>

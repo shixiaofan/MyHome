@@ -4,4 +4,5 @@
     <dimen name="login_nomal_margin_top">100dp</dimen>
     <dimen name="login_nomal_margin_left">20dp</dimen>
     <dimen name="login_nomal_margin_right">20dp</dimen>
+
 </resources>
