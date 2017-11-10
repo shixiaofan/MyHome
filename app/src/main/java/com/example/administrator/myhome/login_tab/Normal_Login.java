@@ -1,4 +1,5 @@
 package com.example.administrator.myhome.login_tab;
+
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -13,16 +14,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+
 import com.example.administrator.myhome.HttpUtils;
 import com.example.administrator.myhome.R;
-import java.io.IOException;
+
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 public class Normal_Login extends AppCompatActivity implements View.OnClickListener,View.OnFocusChangeListener{
     private EditText phone_number,login_pass;
     private ImageView clear_edit_01,clear_edit_02,see_edit_pass;
     private Button login_ok;
-    private String url="https://uhome.haier.net:7503/secuag/security/userLoginNew";
+//    private String url="https://uhome.haier.net:7503/secuag/security/userLoginNew";
+    private String url="http://uhome.haier.net:7500/emuplus/secuag/security/v3.1/userLogin";
     private static final String TAG ="Normal_Login" ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,12 +48,13 @@ public class Normal_Login extends AppCompatActivity implements View.OnClickListe
         phone_number.setOnFocusChangeListener(this);
         login_pass.addTextChangedListener(new passwordChangeListener());
         login_pass.setOnFocusChangeListener(this);
+    }
 
-            }
+
     private void login() {
-        final String username = phone_number.getText().toString().trim();
+        final String loginId = phone_number.getText().toString().trim();
         final String password = login_pass.getText().toString().trim();
-        if (TextUtils.isEmpty(username) || TextUtils.isEmpty(password)) {
+        if (TextUtils.isEmpty(loginId) || TextUtils.isEmpty(password)) {
             Toast.makeText(Normal_Login.this, "用户名或者密码不能为空", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -59,10 +63,10 @@ public class Normal_Login extends AppCompatActivity implements View.OnClickListe
             public void run() {
                 HttpUtils httpUtils = new HttpUtils();
                 //转换为JSON
-                String user = httpUtils.bolwingJson(username, password);
+                String user = httpUtils.bolwingJson(loginId, password,"1","0");
                 Log.d(TAG, "user:" + user);
                 try {
-                    final String result = httpUtils.login(url, user );
+                    final String result = httpUtils.login(url, user);
                     Log.d(TAG, "结果:" + result);
                     //更新UI,在UI线程中
                     runOnUiThread(new Runnable() {
@@ -75,21 +79,12 @@ public class Normal_Login extends AppCompatActivity implements View.OnClickListe
                             }
                         }
                     });
-                } catch (IOException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         }.start();
     }
-
-
-
-
-
-
-
-
-
     @Override
     public void onClick(View view) {
         TransformationMethod type= login_pass.getTransformationMethod();
@@ -111,8 +106,9 @@ public class Normal_Login extends AppCompatActivity implements View.OnClickListe
                 login_pass.setText("");
                 break;
             case R.id.login:
-
                 login();
+//                seelogin();
+
                 break;
         }
     }

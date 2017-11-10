@@ -12,12 +12,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
-
 import com.example.administrator.myhome.R;
 import com.example.administrator.myhome.my_view.Image_Identify_View;
-
 import java.io.IOException;
-
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.MediaType;
@@ -105,15 +102,16 @@ public class Fast_Login extends AppCompatActivity implements View.OnClickListene
         if (null == codeStr || TextUtils.isEmpty(codeStr)) {
             Toast.makeText(this, "请输入验证码", Toast.LENGTH_SHORT).show();
             return;
+
         }
         String code = image_identify_view.getCode();
         Log.e("code", code);
         if (code.equalsIgnoreCase(codeStr)) {
-            getSmsIdentify();//获得短信验证码
+            Toast.makeText(this, "验证码正确", Toast.LENGTH_SHORT).show();
+//            getSmsIdentify();//获得短信验证码
         } else {
             Toast.makeText(this, "验证码错误", Toast.LENGTH_SHORT).show();
         }
-
     }
 
     private void getSmsIdentify() {
@@ -122,7 +120,7 @@ public class Fast_Login extends AppCompatActivity implements View.OnClickListene
     RequestBody body=RequestBody.create(MediaType.parse("\"application/json; charset=utf-8\""),number);
 
         Request requese=new Request.Builder()
-                .url("http://https://uhome.haier.net:7503/secuag/user/getMsgCode")
+                .url("https://uhome.haier.net:7503/secuag/user/getMsgCode")
                 .post(body)
                 .build();
         Call call=clients.newCall(requese);

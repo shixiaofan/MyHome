@@ -6,19 +6,17 @@ public class User  {
     private String loginId;
     private String password;
 
-    public User() {
+    public User(String loginId, String password) {
         this.loginId = loginId;
         this.password = password;
     }
-
-
 
     public String getLoginId() {
         return loginId;
     }
 
-    public void setLoginId(String phone_number) {
-        this.loginId = phone_number;
+    public void setLoginId(String loginId) {
+        this.loginId = loginId;
     }
 
     public String getPassword() {
@@ -32,7 +30,7 @@ public class User  {
     @Override
     public String toString() {
         return "User{" +
-                "phone_number='" + loginId + '\'' +
+                "loginId='" + loginId + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }
