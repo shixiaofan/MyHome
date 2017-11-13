@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<LinearLayout
+    android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,5 +8,11 @@
     android:layout_height="match_parent"
     android:background="#5bed5b"
     tools:context="com.example.administrator.myhome.main_tab.Home_page">
+    <com.youth.banner.Banner
+        android:id="@+id/host_banner"
+        android:layout_width="match_parent"
+        android:layout_height="120dp">
 
-</android.support.constraint.ConstraintLayout>
+    </com.youth.banner.Banner>
+
+</LinearLayout>
