@@ -6,13 +6,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#5bed5b"
     tools:context="com.example.administrator.myhome.main_tab.Home_page">
-    <com.youth.banner.Banner
-        android:id="@+id/host_banner"
-        android:layout_width="match_parent"
-        android:layout_height="120dp">
-
-    </com.youth.banner.Banner>
+<com.bigkoo.convenientbanner.ConvenientBanner
+    android:id="@+id/host_banner"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"/>
 
 </LinearLayout>

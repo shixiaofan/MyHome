@@ -125,6 +125,11 @@ public class HttpUtils {
     /**
      * --------------------------------------------------------------------------------------------------首页广告轮播
      * */
+
+
+
+
+
     public String bolwingJson(String loginId, String password,String loginType,String accType) {
         return "{'loginId':" + loginId + "," + "'password':" + password + "," + "'loginType':" + loginType + "," + "'accType':" + accType + "}";
     }
